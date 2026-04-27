@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zombie Defense</title>
+  <link rel="stylesheet" href="/styles/ui.css">
+</head>
+<body>
+  <canvas id="game-canvas"></canvas>
+
+  <div id="hud" class="hidden">
+    <div id="health-section">
+      <div class="bar-label p1-label">P1</div>
+      <div class="health-bar">
+        <div id="player-health-fill" class="health-fill"></div>
+      </div>
+      <span id="ammo-display" class="ammo-inline">30/30</span>
+      <span id="p1-mine-cd" class="mine-cd ready">MINE</span>
+    </div>
+    <div id="p2-health-section">
+      <div class="bar-label p2-label">P2</div>
+      <div class="health-bar">
+        <div id="p2-health-fill" class="health-fill p2-fill"></div>
+      </div>
+      <span id="p2-ammo-display" class="ammo-inline">30/30</span>
+      <span id="p2-mine-cd" class="mine-cd ready">MINE</span>
+    </div>
+    <div id="base-health-section">
+      <div class="bar-label">BASE</div>
+      <div class="health-bar">
+        <div id="base-health-fill" class="health-fill base-fill"></div>
+      </div>
+    </div>
+    <div id="stats">
+      <span id="wave-counter">Wave: 1</span>
+      <span id="score-display">Score: 0</span>
+    </div>
+  </div>
+
+  <div id="wave-announcement" class="hidden">
+    <h1>WAVE <span id="wave-num">1</span></h1>
+  </div>
+
+  <div id="crosshair">+</div>
+
+  <div id="damage-overlay"></div>
+  <div id="mute-indicator" class="hidden">MUTED [M]</div>
+
+  <div id="shop-panel" class="hidden">
+    <h2>SHOP <span class="shop-hint">[Tab]</span></h2>
+    <div id="shop-items"></div>
+    <div id="shop-status"></div>
+  </div>
+
+  <div id="start-screen">
+    <h1>ZOMBIE DEFENSE</h1>
+    <p class="controls">WASD to move &bull; Mouse to aim &bull; Click to shoot &bull; R reload &bull; Q/E switch weapon &bull; B barricade &bull; Tab shop</p>
+    <p class="controls gamepad-controls">Gamepad: Left Stick move &bull; Right Stick aim &bull; RT/RB shoot &bull; B/LB reload &bull; A barricade &bull; Start shop</p>
+    <div class="start-buttons">
+      <button id="start-btn">START GAME</button>
+      <button id="ai-play-btn">WATCH AI PLAY</button>
+      <button id="train-btn">TRAIN AI</button>
+    </div>
+  </div>
+
+  <div id="ai-indicator" class="hidden">AI PLAYING</div>
+
+  <div id="training-overlay" class="hidden">
+    <h2>DQN TRAINING</h2>
+    <div id="training-stats">
+      <div>Episode: <span id="train-episode">0</span></div>
+      <div>Total Steps: <span id="train-steps">0</span></div>
+      <div>Epsilon: <span id="train-epsilon">1.000</span></div>
+      <div>Ep. Reward: <span id="train-reward">0</span></div>
+      <div>Avg Reward: <span id="train-avg-reward">0</span></div>
+      <div>Wave: <span id="train-wave">0</span></div>
+      <div>Score: <span id="train-score">0</span></div>
+      <div>Buffer: <span id="train-buffer">0</span></div>
+    </div>
+    <div id="training-controls">
+      <label><input type="checkbox" id="train-vis-toggle"> Show visualization</label>
+      <label>Speed: <input type="range" id="train-speed" min="1" max="50" value="20"></label>
+      <button id="train-save-btn">SAVE MODEL</button>
+      <button id="train-stop-btn">STOP TRAINING</button>
+    </div>
+  </div>
+
+  <div id="game-over-screen" class="hidden">
+    <h1>GAME OVER</h1>
+    <p>Score: <span id="final-score">0</span></p>
+    <p>Wave: <span id="final-wave">0</span></p>
+    <button id="restart-btn">PLAY AGAIN</button>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
